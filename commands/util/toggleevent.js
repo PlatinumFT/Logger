@@ -28,3 +28,7 @@ exports.help = {
     usage: "events",
     aliases: ['te']
 }
+
+exports.permissions = [
+    'MANAGE_CHANNELS', 'MANAGE_ROLES'
+]

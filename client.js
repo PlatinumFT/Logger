@@ -18,3 +18,4 @@ async function run() {
 
 //create table settings(token varchar, prefix text, colour varchar(6));
 //create table guilds(guild_id varchar(30), channel_id varchar(30), channelCreate boolean, channelDelete boolean, channelUpdate boolean, emojiCreate boolean, emojiDelete boolean, emojiUpdate boolean, guildBanAdd boolean, guildBanRemove boolean, guildMemberAdd boolean, guildMemberRemove boolean, guildMemberUpdate boolean, messageDelete boolean, messageDeleteBulk boolean, messageUpdate boolean, roleCreate boolean, roleDelete boolean, roleUpdate boolean, voiceStateUpdate boolean);
+//create table ignored(guild_id varchar(30), channel_id varchar(30));

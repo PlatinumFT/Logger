@@ -9,14 +9,14 @@ module.exports = async messages => {
     if(guildinfo[0].channel_id == '') return;
     if(guildinfo[0].messagedeletebulk == false) return;
 
+    let ignorer = await message.client.db(`select * from ignored where guild_id = '${message.guild.id}' and channel_id = '${message.channel.id}'`);
+    if(ignorer[0]) return;
+
     str = messages.map(m => `${m.author.username}#${m.author.discriminator} (${m.author.id}) | ${m.id} | ${m.createdAt}: ${m.content}`).join('\n');
 
     let pastebin = new PastebinAPI({
         'api_dev_key' : 'c9da4902f0e878fbacb36c7b231fb981',
     });
-
-
-
 
     let embed = new Discord.RichEmbed()
                     .setAuthor(`${messages.first().author.username}#${messages.first().author.discriminator}`, messages.first().author.avatarURL)

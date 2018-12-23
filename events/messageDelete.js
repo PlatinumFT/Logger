@@ -4,11 +4,12 @@ module.exports = async message => {
     if(message.author.bot) return;
 
     let guildinfo = await message.client.db(`select * from guilds where guild_id = '${message.guild.id}'`);
-    console.log(guildinfo[0].channel_id)
+
     if(guildinfo[0].channel_id == '') return;
     if(guildinfo[0].messagedelete == false) return;
 
-    console.log(message.content);
+    let ignorer = await message.client.db(`select * from ignored where guild_id = '${message.guild.id}' and channel_id = '${message.channel.id}'`);
+    if(ignorer[0]) return;
 
     let embed = new Discord.RichEmbed()
                     .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)

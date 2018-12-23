@@ -30,3 +30,7 @@ exports.help = {
     usage: "events",
     aliases: ['i']
 }
+
+exports.permissions = [
+    'MANAGE_CHANNELS', 'MANAGE_ROLES'
+]

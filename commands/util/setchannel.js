@@ -26,3 +26,7 @@ exports.help = {
 async function embed(text) {
     return new discord.RichEmbed().setDescription(text).setColor('#87D7E6');
 }
+
+exports.permissions = [
+    'MANAGE_CHANNELS', 'MANAGE_ROLES'
+]

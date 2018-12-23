@@ -6,7 +6,7 @@ module.exports = async (guild, user) => {
     if(guildinfo[0].channel_id == '') return;
     if(guildinfo[0].guildbanremove == false) return;
 
-    const entry = await guild.fetchAuditLogs({type: 'GUILD_MEMBER_REMOVE'}).then(audit => audit.entries.first())
+    const entry = await guild.fetchAuditLogs({type: 'MEMBER_BAN_REMOVE'}).then(audit => audit.entries.first())
 
     let embed = new Discord.RichEmbed()
                     .setAuthor(`${user.username}#${user.discriminator}`, user.avatarURL)

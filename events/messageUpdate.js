@@ -2,11 +2,16 @@ const Discord = require("discord.js");
 
 module.exports = async (oldMessage, newMessage) => {
     if(oldMessage.author.bot) return;
+    if(oldMessage.content == newMessage.content) return;
 
     let guildinfo = await oldMessage.client.db(`select * from guilds where guild_id = '${oldMessage.guild.id}'`);
-    console.log(guildinfo[0].channel_id)
+
     if(guildinfo[0].channel_id == '') return;
     if(guildinfo[0].messageupdate == false) return;
+
+    let ignorer = await message.client.db(`select * from ignored where guild_id = '${message.guild.id}' and channel_id = '${message.channel.id}'`);
+    if(ignorer[0]) return;
+
 
     let embed = new Discord.RichEmbed()
                     .setAuthor(`${oldMessage.author.username}#${oldMessage.author.discriminator}`, oldMessage.author.avatarURL)
