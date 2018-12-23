@@ -1,7 +1,6 @@
 const Discord = require("discord.js");
 
 module.exports = async (cmd, message) => {
-    console.log(cmd.permissions)
     if(!cmd.permissions ||
        cmd.permissions == []
     ) return true;
