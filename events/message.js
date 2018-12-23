@@ -24,7 +24,7 @@ module.exports = async message => {
 
     if(!cmd) return;
 
-    if ((cmd.help.type = 'owner' && !isOwner)) return;
+    if ((cmd.help.type == 'owner' && !isOwner)) return;
     let bool = await require('../util/permsChecker.js')(cmd, message);
     if(bool || bool == true) {
         cmd.run(client, message, args)
