@@ -9,7 +9,7 @@ module.exports = async (oldMessage, newMessage) => {
     if(guildinfo[0].channel_id == '') return;
     if(guildinfo[0].messageupdate == false) return;
 
-    let ignorer = await message.client.db(`select * from ignored where guild_id = '${message.guild.id}' and channel_id = '${message.channel.id}'`);
+    let ignorer = await message.client.db(`select * from ignored where guild_id = '${oldMessage.guild.id}' and channel_id = '${oldMessage.channel.id}'`);
     if(ignorer[0]) return;
 
 
