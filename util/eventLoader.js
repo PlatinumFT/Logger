@@ -5,7 +5,7 @@ module.exports = client => {
     client.on('ready', () => reqEvent('ready')(client));
     client.on('message', (message) => reqEvent('message')(message));
     client.on('messageDelete', (message) => reqEvent('messageDelete')(message));
-    client.on('messageDeleteBulk', (messages) => reqEvent('messageDeleteBulk')(messages));
+    client.on('messageDeleteBulk', (messages) => reqEvent('messageDeleteBulk')(messages, client));
     client.on('messageUpdate', (oldMessage, newMessage) => reqEvent('messageUpdate')(oldMessage, newMessage));
     // client.on('reconnecting', () => reqEvent('ready')(client));
     // client.on('disconnected', () => reqEvent('ready')(client));
