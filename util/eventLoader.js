@@ -21,4 +21,5 @@ module.exports = client => {
     client.on('roleCreate', (role) => reqEvent('roleCreate')(role));
     client.on('roleDelete', (role) => reqEvent('roleDelete')(role));
     client.on('voiceStateUpdate', (oldMember, newMember) => reqEvent('voiceStateUpdate')(oldMember, newMember));
+    // client.on('messageReactionAdd', (messageReaction, user) => console.log(`${user.username}#${user.discriminator}`));
 }
