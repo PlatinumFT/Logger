@@ -9,7 +9,7 @@ module.exports = async (messages, client) => {
     if(guildinfo[0].channel_id == '') return;
     if(guildinfo[0].messagedeletebulk == false) return;
 
-    let ignorer = await client.db(`select * from ignored where guild_id = '${message.first().guild.id}' and channel_id = '${message.first().channel.id}'`);
+    let ignorer = await client.db(`select * from ignored where guild_id = '${messages.first().guild.id}' and channel_id = '${messages.first().channel.id}'`);
     if(ignorer[0]) return;
 
     str = messages.map(m => `${m.author.username}#${m.author.discriminator} (${m.author.id}) | ${m.id} | ${m.createdAt}: ${m.content}`).join('\n');
