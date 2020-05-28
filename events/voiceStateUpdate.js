@@ -3,6 +3,7 @@ const Discord = require("discord.js");
 module.exports = async (oldMember, newMember) => {
     let oldVoice = oldMember.voiceChannel;
     let newVoice = newMember.voiceChannel;
+
     if(!oldVoice) {
         let guildinfo = await newMember.client.db(`select * from guilds where guild_id = '${newMember.guild.id}'`);
 
@@ -21,6 +22,9 @@ module.exports = async (oldMember, newMember) => {
         c.send(`**${oldMember.user.username}#${oldMember.user.discriminator}** has a Voice Channel.`,{embed})
     } else if (!newVoice) {
         let guildinfo = await oldMember.client.db(`select * from guilds where guild_id = '${oldMember.guild.id}'`)
+
+        if(guildinfo[0].channel_id == '') return;
+        if(guildinfo[0].voicestateupdate == false) return;
 
         let c = oldMember.guild.channels.get(guildinfo[0].channel_id);
         let embed = new Discord.RichEmbed()
