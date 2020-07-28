@@ -11,18 +11,9 @@ module.exports = async message => {
     let ignorer = await message.client.db(`select * from ignored where guild_id = '${message.guild.id}' and channel_id = '${message.channel.id}'`);
     if(ignorer[0]) return;
 
-    const entry = await message.guild.fetchAuditLogs({ type: 'MESSAGE_DELETE', limit: 1 });
-
-    let deletedBy = '';
-    if (entry) {
-        const log = entry.entries.first();
-        const { executor, target } = log;
-        if (target.id === message.author.id) deletedBy = '\n► Deleted by: ' + executor.tag;
-    }
-
     let embed = new Discord.RichEmbed()
                     .setAuthor(`${message.author.username}#${message.author.discriminator}`, message.author.avatarURL)
-                    .addField(`Message Deleted`, `► Content: \`${message.content}\`${deletedBy}\n► Channel: **${message.channel.name}**\n► Message ID: ${message.id}`)
+                    .addField(`Message Deleted`, `► Content: \`${message.content}\`\n► Channel: **${message.channel.name}**\n► Message ID: ${message.id}`)
                     .setTimestamp()
                     .setColor(message.client.settings.colour)
                     .setFooter(`${message.client.user.username}#${message.client.user.discriminator}`, message.client.user.avatarURL)
