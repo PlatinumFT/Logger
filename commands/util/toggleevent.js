@@ -19,7 +19,6 @@ exports.run = async (client, message, args) => {
         await client.db(`update guilds set ${args[0]} = true where guild_id = '${message.guild.id}'`);
         return message.channel.send(await embed(`${message.author}, updated ${args[0]} to true.`));
     }
-    
 }
 
 exports.help = {

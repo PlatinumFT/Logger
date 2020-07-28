@@ -19,7 +19,7 @@ module.exports = async (oldMember, newMember) => {
         .setColor(newMember.client.settings.colour)
         .setFooter(`${newMember.client.user.username}#${newMember.client.user.discriminator}`, newMember.client.user.avatarURL)
 
-        c.send(`**${oldMember.user.username}#${oldMember.user.discriminator}** has a Voice Channel.`,{embed})
+        c.send(`**${oldMember.user.username}#${oldMember.user.discriminator}** has joined a Voice Channel.`,{embed})
     } else if (!newVoice) {
         let guildinfo = await oldMember.client.db(`select * from guilds where guild_id = '${oldMember.guild.id}'`)
 
